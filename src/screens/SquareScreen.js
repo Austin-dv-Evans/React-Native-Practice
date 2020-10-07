@@ -8,6 +8,7 @@ const COLOR_INCREMENT = 15
 const reducer = (state, action) => {
 // state === { red: number, green: number, blue: number}
 // action === { colorToChange: 'red' || 'green' || 'blue', amount: 15 || -15}
+// action community standard === { type: 'change_red' || 'change_green' || 'change_blue', payload: 15 || -15}
     
     switch (action.colorToChange){
         case 'red':
@@ -51,15 +52,19 @@ const SquareScreen = () => {
             color="Red"
         />
         <ColorCounter 
-            onIncrease={() => dispatch({ colorToChange: 'blue', amount: COLOR_INCREMENT }) } 
-            onDecrease={() => dispatch({ colorToChange: 'blue', amount: -1 * COLOR_INCREMENT })} 
-            color="Blue" 
-        />
-        <ColorCounter 
             onIncrease={() => dispatch({ colorToChange: 'green', amount: COLOR_INCREMENT }) } 
             onDecrease={() => dispatch({ colorToChange: 'green', amount: -1 * COLOR_INCREMENT })} 
             color="Green" 
         />
+        <ColorCounter 
+            onIncrease={() => dispatch({ colorToChange: 'blue', amount: COLOR_INCREMENT }) } 
+            onDecrease={() => dispatch({ colorToChange: 'blue', amount: -1 * COLOR_INCREMENT })} 
+            color="Blue" 
+        />
+        <Text 
+            style={{textAlign:"center", fontSize: 20, padding: 20}}>
+                rgb ( {red}, {green}, {blue} )
+        </Text>
         
         </View>
     );
